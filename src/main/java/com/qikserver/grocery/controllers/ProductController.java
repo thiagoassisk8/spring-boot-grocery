@@ -21,8 +21,14 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getAllProducts() throws IOException {
+    public ResponseEntity<Object> getAllProducts() throws IOException {
         List<Product> products = this.ProductService.fetchProducts();
         return new ResponseEntity<>(products, HttpStatus.OK);
+
+    }
+
+    @GetMapping("/hello")
+    public ResponseEntity<String> helloWorld() {
+        return new ResponseEntity<>("Hello, World!", HttpStatus.OK);
     }
 }

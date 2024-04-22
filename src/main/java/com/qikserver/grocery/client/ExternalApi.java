@@ -12,7 +12,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class ExternalApi {
-    private static final String BASE_URL = "http://localhost:8080";
+    private static final String BASE_URL = "http://localhost:8081";
     private final OkHttpClient client;
     private final Gson gson;
 
