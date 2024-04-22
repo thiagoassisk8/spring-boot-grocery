@@ -27,6 +27,12 @@ public class ProductController {
 
     }
 
+    @GetMapping("/products/{productId}")
+    public ResponseEntity<Product> getProductById(@PathVariable String productId) throws IOException {
+        Product product = this.ProductService.fetchProductById(productId);
+        return new ResponseEntity<>(product, HttpStatus.OK);
+    }
+
     @GetMapping("/hello")
     public ResponseEntity<String> helloWorld() {
         return new ResponseEntity<>("Hello, World!", HttpStatus.OK);

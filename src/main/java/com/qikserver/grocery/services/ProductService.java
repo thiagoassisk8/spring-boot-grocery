@@ -21,4 +21,8 @@ public class ProductService {
         return this.ExternalApi.fetchProducts();
     }
 
+    public Product fetchProductById(String productId) throws IOException {
+        return this.ExternalApi.fetchProductById(productId);
+    }
+
 }

@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties(prefix = "api")
+
 public class ExternalApi {
 
     private final OkHttpClient client;
@@ -44,17 +45,33 @@ public class ExternalApi {
 
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
-                throw new IOException("Failed in search for products: " + response);
+                String errorMessage = "There's no products: " + response;
+                throw new IOException(errorMessage);
             }
 
-            return parseProducts(response);
+            return parseResponse(response, new TypeToken<List<Product>>() {
+            }.getType());
         }
     }
 
-    private List<Product> parseProducts(Response response) throws IOException {
-        Type productListType = new TypeToken<List<Product>>() {
-        }.getType();
-        return gson.fromJson(response.body().string(), productListType);
+    public Product fetchProductById(String productId) throws IOException {
+        String url = getEndpoint() + "/products/" + productId;
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                String errorMessage = String.format("There's no product with ID %s: %s", productId, response);
+                throw new IOException(errorMessage);
+            }
+
+            return parseResponse(response, Product.class);
+        }
     }
 
+    private <T> T parseResponse(Response response, Type type) throws IOException {
+        return gson.fromJson(response.body().string(), type);
+    }
 }
