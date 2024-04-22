@@ -14,15 +14,15 @@ public class Cupom {
     private int freeQty;
     private double price;
 
-    private int quantity;
+    private int amount;
 
-    public Cupom(String id, CupomType type, int requiredQty, int freeQty, double price, int quantity) {
+    public Cupom(String id, CupomType type, int requiredQty, int freeQty, double price, int amount) {
         this.id = id;
         this.type = type;
         this.requiredQty = requiredQty;
         this.freeQty = freeQty;
         this.price = price;
-        this.quantity = quantity;
+        this.amount = amount;
     }
 
     public String getId() {
@@ -65,11 +65,11 @@ public class Cupom {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public int setAmount(int amount) {
+        return this.amount = amount;
     }
 }
