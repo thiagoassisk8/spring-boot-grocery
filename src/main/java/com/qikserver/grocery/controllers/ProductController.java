@@ -1,5 +1,7 @@
 package com.qikserver.grocery.controllers;
 
+import com.qikserver.grocery.entities.CartItem;
+import com.qikserver.grocery.entities.Order;
 import com.qikserver.grocery.entities.Product;
 
 import com.qikserver.grocery.services.ProductService;
@@ -31,6 +33,12 @@ public class ProductController {
     public ResponseEntity<Product> getProductById(@PathVariable String productId) throws IOException {
         Product product = this.ProductService.fetchProductById(productId);
         return new ResponseEntity<>(product, HttpStatus.OK);
+    }
+
+    @PostMapping("/addCart")
+    public ResponseEntity<List<Order>> addToCart(@RequestBody List<CartItem> items) throws IOException {
+        List<Order> finalOrders = this.ProductService.addToCart(items);
+        return ResponseEntity.ok(finalOrders);
     }
 
     @GetMapping("/hello")
