@@ -37,7 +37,7 @@ public class ProductService {
         for (CartItem item : items) {
             Product product = this.ExternalApi.fetchProductById(item.getProductId());
 
-            int quantity = item.getQuantity(); // Using integer instead of BigDecimal for quantity
+            int quantity = item.getQuantity();
 
             BigDecimal productValue = new BigDecimal(product.getPrice());
             BigDecimal itemTotal = productValue.multiply(BigDecimal.valueOf(quantity));
@@ -65,13 +65,13 @@ public class ProductService {
                     BigDecimal totalDesc = new BigDecimal(qtPromo).multiply(promoPrice);
 
                     if (qtNonPromo > 0) {
-                        totalDesc = totalDesc.add(productValue); // Fixed this line
+                        totalDesc = totalDesc.add(productValue);
                     }
 
                     itemSavings = itemSavings.add(itemTotal.subtract(totalDesc));
                     itemTotal = itemTotal.subtract(itemSavings);
                 } else {
-                    // throw new ResourceNotFoundException("Promotion type does not exist");
+
                 }
             }
 
