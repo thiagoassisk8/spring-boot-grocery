@@ -11,10 +11,24 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ConfigurationProperties(prefix = "api")
 public class ExternalApi {
-    private static final String BASE_URL = "http://localhost:8081";
+
     private final OkHttpClient client;
     private final Gson gson;
+    private String endpoint;
+
+    public String getEndpoint() {
+        return endpoint;
+    };
+
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
+    };
 
     public ExternalApi() {
         client = new OkHttpClient();
@@ -22,7 +36,7 @@ public class ExternalApi {
     }
 
     public List<Product> fetchProducts() throws IOException {
-        String url = BASE_URL + "/products";
+        String url = getEndpoint() + "/products";
         Request request = new Request.Builder()
                 .url(url)
                 .get()
