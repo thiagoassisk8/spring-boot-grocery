@@ -5,7 +5,7 @@ Api Documentation: [Link](https://immense-thicket-69297-ae6d8599f1bc.herokuapp.c
 
 1. **How long did you spend on the test? What would you add if you had more time?**
    I spend about 9 hours within 3 days on the test
-   If I had more time, I would have added more unit tests to ensure there are no breaches. I believe the more tests you put on the application, the better it gets because then we become better able to see more breaches that weren't found
+   If I had more time, I would have added more unit tests using mockito for instance to ensure there are no breaches. I believe the more tests you put on the application, the better it gets because then we become better able to see more breaches that weren't found
    Additionally, if I had extra time, I would make it possible to override the system and allow the operator to insert the coupon’s ID, and then the discount is given. They would simply need to enter the coupon ID correctly, and the system would apply it automatically, regardless of the circumstances. The way I approached it was to have the coupon applied if the circumstances match, not the other way around.
    And improvemnts reguarding Error Handling. The excpetions that the application should deal with that weren't done given the lack of time to test more the application
 
