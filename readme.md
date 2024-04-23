@@ -1,7 +1,7 @@
 Api Documentation: [Link](https://immense-thicket-69297-ae6d8599f1bc.herokuapp.com/api-docs/)
 
 1. **How long did you spend on the test? What would you add if you had more time?**
-
+   I spend about 9 hours on the test
    I would add more unit tests to ensure there are no breaches. Additionally, if I had extra time, I would make it possible to override the system and allow the operator to insert the coupon’s ID, and then the discount is given. They would simply need to enter the coupon ID correctly, and the system would apply it automatically, regardless of the circumstances. The way I approached it was to have the coupon applied if the circumstances match, not the other way around.
 
 2. **What was the most useful feature that was added to the latest version of your chosen language? Please include a snippet of code that shows how you've used it?**
