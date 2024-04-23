@@ -28,7 +28,7 @@ Api Documentation: [Link](https://immense-thicket-69297-ae6d8599f1bc.herokuapp.c
     private <T> T parseResponse(Response response, Type type) throws IOException {
         return gson.fromJson(response.body().string(), type);
     }
-
+```
 
 3. **What did you find most difficult?**
 
@@ -39,4 +39,3 @@ Api Documentation: [Link](https://immense-thicket-69297-ae6d8599f1bc.herokuapp.c
    I set up a couple of ways to track down problems when I was coding. First off, I did a lot of debugging to really dive deep into the data and find any issues. And then, I made sure to use the spring-boot-devtools package so I could do maintenance on the server in real-time. That way, I could quickly jump in and fix anything that came up.
 
 5. **The Wiremock represents one source of information. We should be prepared to integrate with more sources. List the steps that we would need to take to add more sources of items with diferent formats and promotions.**
-```
