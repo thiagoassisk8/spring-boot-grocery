@@ -1,26 +1,22 @@
 package com.qikserver.grocery.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Cupom {
 
     private String id;
     public CupomType type;
 
-    @JsonProperty("required_qty")
-    private int requiredQty;
+    private int required_qty;
 
-    @JsonProperty("free_qty")
-    private int freeQty;
+    private int free_qty;
     private double price;
 
     private int amount;
 
-    public Cupom(String id, CupomType type, int requiredQty, int freeQty, double price, int amount) {
+    public Cupom(String id, CupomType type, int required_qty, int free_qty, double price, int amount) {
         this.id = id;
         this.type = type;
-        this.requiredQty = requiredQty;
-        this.freeQty = freeQty;
+        this.required_qty = required_qty;
+        this.free_qty = free_qty;
         this.price = price;
         this.amount = amount;
     }
@@ -42,19 +38,19 @@ public class Cupom {
     }
 
     public int getRequiredQty() {
-        return requiredQty;
+        return required_qty;
     }
 
-    public void setRequiredQty(int requiredQty) {
-        this.requiredQty = requiredQty;
+    public void setRequiredQty(int required_qty) {
+        this.required_qty = required_qty;
     }
 
     public int getFreeQty() {
-        return freeQty;
+        return free_qty;
     }
 
-    public void setFreeQty(int freeQty) {
-        this.freeQty = freeQty;
+    public void setFreeQty(int free_qty) {
+        this.free_qty = free_qty;
     }
 
     public double getPrice() {
@@ -72,4 +68,5 @@ public class Cupom {
     public int setAmount(int amount) {
         return this.amount = amount;
     }
+
 }

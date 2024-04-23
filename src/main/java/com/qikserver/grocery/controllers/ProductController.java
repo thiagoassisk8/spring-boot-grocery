@@ -37,11 +37,11 @@ public class ProductController {
 
     @PostMapping("/addCart")
     public ResponseEntity<List<Order>> addToCart(@RequestBody List<CartItem> items) throws IOException {
-        List<Order> itemCheckouts = this.ProductService.addToCart(items);
-        if (itemCheckouts.isEmpty()) {
+        List<Order> checkoutOrder = this.ProductService.addToCart(items);
+        if (checkoutOrder.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(itemCheckouts);
+        return ResponseEntity.ok(checkoutOrder);
     }
 
 }

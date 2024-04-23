@@ -31,30 +31,34 @@ public class ProductService {
     }
 
     public List<Order> addToCart(List<CartItem> items) throws IOException {
-        List<Order> itemCheckouts = new ArrayList<>();
+        List<Order> checkoutOrder = new ArrayList<>();
 
         for (CartItem item : items) {
             Product product = this.ExternalApi.fetchProductById(item.getProductId());
+
             int quantity = item.getQuantity();
+
             double productValue = product.getPrice();
             double itemTotal = productValue * quantity;
             double itemSavings = 0;
 
             for (Cupom promotion : product.getPromotions()) {
+
                 double[] result = applyDiscount(promotion.getType(), itemTotal, productValue, quantity, promotion,
                         itemSavings);
                 itemTotal = result[0];
                 itemSavings = result[1];
             }
 
-            itemCheckouts.add(new Order(product, quantity, itemTotal, itemSavings));
+            checkoutOrder.add(new Order(product, quantity, itemTotal, itemSavings));
         }
 
-        return itemCheckouts;
+        return checkoutOrder;
     }
 
     private double[] applyDiscount(CupomType type, double itemTotal, double productValue,
-            int quantity, Cupom promotion, double itemSavings) {
+            int quantity, Cupom promotion, double itemSavings) throws IOException {
+
         switch (type) {
             case FLAT_PERCENT:
                 return ImplementFlatCupom(itemTotal, productValue, quantity, promotion.getAmount(), itemSavings);
@@ -65,8 +69,8 @@ public class ProductService {
                 return ImplementOverRideCupom(itemTotal, productValue, quantity,
                         promotion.getRequiredQty(), promotion.getPrice(), itemSavings);
             default:
+                throw new IOException("Promotion type does not exist");
 
-                return new double[] { roundToTwoDecimals(itemTotal), roundToTwoDecimals(itemSavings) };
         }
     }
 

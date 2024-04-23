@@ -3,6 +3,7 @@ package com.qikserver.grocery.entities;
 public class CartItem {
     private String productId;
     private int quantity;
+    private String cupomId;
 
     public CartItem(String productId, int quantity) {
         this.productId = productId;

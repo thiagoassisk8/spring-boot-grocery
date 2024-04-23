@@ -9,6 +9,7 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+
 import java.util.List;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -62,6 +63,7 @@ public class ExternalApi {
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
+
             if (!response.isSuccessful()) {
                 String errorMessage = String.format("There's no product with ID %s: %s", productId, response);
                 throw new IOException(errorMessage);
