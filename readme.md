@@ -1,8 +1,5 @@
 Api Documentation: [Link](https://immense-thicket-69297-ae6d8599f1bc.herokuapp.com/api-docs/)
 
-I used an old-school Google Docs to tap down my initial thoughts on this problem.
-![Image Description](imgs/DocsPrint.png)
-
 1. **How long did you spend on the test? What would you add if you had more time?**
    I spend about 9 hours within 3 days on the test
    If I had more time, I would have added more unit tests to ensure there are no breaches. I believe the more tests you put on the application, the better it gets because then we become better able to see more breaches that weren't found
@@ -63,3 +60,6 @@ Later when they expanded the app to a web version, real estate agencies started 
 To solve this my thogught was to create a form where real estate agencies input the host' addresses. Then, this address is converted into geolocation, allowing the service to be provided effectively, even without the exact location of the clients.
 
 Additionally, to implement this solution, I had to research which resources could assist in this process. That's when I found out about the Google Cloud Platform (GCP), which offers tools to handle geolocation and convert addresses into geographic coordinates. This discovery enabled the creation of the form that exchanges data for geolocation, providing an effective solution for real estate agencies to request services for hosts.
+
+I used an old-school Google Docs to tap down my initial thoughts on this problem.
+![Image Description](imgs/screenshot.png)
