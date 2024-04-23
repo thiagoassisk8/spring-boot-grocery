@@ -1,7 +1,6 @@
 **API DOCUMENTATION**
 Api Documentation: [Link](https://immense-thicket-69297-ae6d8599f1bc.herokuapp.com/api-docs/)
 
-**Abstraction**
 ![Image Description](imgs/diagram.png)
 
 1. **How long did you spend on the test? What would you add if you had more time?**
