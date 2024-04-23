@@ -30,9 +30,11 @@ Api Documentation: [Link](https://immense-thicket-69297-ae6d8599f1bc.herokuapp.c
     }
 ```
 
+This function was my secret weapon! Whenever I find myself in a tight spot needing info from WireMock, it came to the rescue. It was like having a handy tool in my toolbox, making data retrieval easy.
+
 3. **What did you find most difficult?**
 
-   The most challenging aspect was devising a solution that effectively addressed all the system's requirements and translating it into code. Given the object-oriented nature of the codebase, it was crucial to have a clear understanding of the solution before diving into implementation. Specifically, I struggled with handling the functionality of discounting within a tight timeframe.
+   The most challenging aspect was thinking about a solution that effectively addressed all the system's requirements and turning it into code. Given the object-oriented nature of the codebase, it was crucial to have a clear understanding of the solution before diving into implementation. Specifically, I struggled with handling the functionality of discounting within a tight timeframe.
 
 4. **What mechanism did you put in place to track down issues in production on this code? If you didn’t put anything, write down what you could do.**
 
