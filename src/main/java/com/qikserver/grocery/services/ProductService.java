@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,51 +35,83 @@ public class ProductService {
 
         for (CartItem item : items) {
             Product product = this.ExternalApi.fetchProductById(item.getProductId());
-
             int quantity = item.getQuantity();
+            double productValue = product.getPrice();
+            double itemTotal = productValue * quantity;
+            double itemSavings = 0;
 
-            BigDecimal productValue = new BigDecimal(product.getPrice());
-            BigDecimal itemTotal = productValue.multiply(BigDecimal.valueOf(quantity));
-            BigDecimal itemSavings = BigDecimal.ZERO;
             for (Cupom promotion : product.getPromotions()) {
-                if (promotion.getType() == CupomType.FLAT_PERCENT) {
-                    BigDecimal discountPercentage = BigDecimal.valueOf(promotion.getAmount())
-                            .divide(BigDecimal.valueOf(100));
-                    BigDecimal discountAmount = productValue.multiply(discountPercentage);
-
-                    itemTotal = itemTotal.subtract(discountAmount.multiply(BigDecimal.valueOf(quantity)));
-                    itemSavings = itemSavings.add(discountAmount.multiply(BigDecimal.valueOf(quantity)));
-                } else if (promotion.getType() == CupomType.BUY_X_GET_Y_FREE) {
-                    BigDecimal qtFree = BigDecimal.valueOf(quantity).divide(new BigDecimal(promotion.getRequiredQty()));
-
-                    itemTotal = itemTotal.subtract(qtFree.multiply(productValue));
-                    itemSavings = itemSavings.add(qtFree.multiply(productValue));
-                } else if (promotion.getType() == CupomType.QTY_BASED_PRICE_OVERRIDE) {
-                    int requiredQt = promotion.getRequiredQty();
-                    BigDecimal promoPrice = new BigDecimal(promotion.getPrice());
-
-                    int qtPromo = quantity / requiredQt;
-                    int qtNonPromo = quantity % requiredQt;
-
-                    BigDecimal totalDesc = new BigDecimal(qtPromo).multiply(promoPrice);
-
-                    if (qtNonPromo > 0) {
-                        totalDesc = totalDesc.add(productValue);
-                    }
-
-                    itemSavings = itemSavings.add(itemTotal.subtract(totalDesc));
-                    itemTotal = itemTotal.subtract(itemSavings);
-                } else {
-
-                }
+                double[] result = applyDiscount(promotion.getType(), itemTotal, productValue, quantity, promotion,
+                        itemSavings);
+                itemTotal = result[0];
+                itemSavings = result[1];
             }
 
-            Order dto = new Order(product, quantity, itemTotal, itemSavings);
-            itemCheckouts.add(dto);
-
+            itemCheckouts.add(new Order(product, quantity, itemTotal, itemSavings));
         }
 
         return itemCheckouts;
+    }
+
+    private double[] applyDiscount(CupomType type, double itemTotal, double productValue,
+            int quantity, Cupom promotion, double itemSavings) {
+        switch (type) {
+            case FLAT_PERCENT:
+                return ImplementFlatCupom(itemTotal, productValue, quantity, promotion.getAmount(), itemSavings);
+            case BUY_X_GET_Y_FREE:
+                return ImplementBuyXGetYCupom(itemTotal, productValue, quantity, promotion.getRequiredQty(),
+                        itemSavings);
+            case QTY_BASED_PRICE_OVERRIDE:
+                return ImplementOverRideCupom(itemTotal, productValue, quantity,
+                        promotion.getRequiredQty(), promotion.getPrice(), itemSavings);
+            default:
+
+                return new double[] { roundToTwoDecimals(itemTotal), roundToTwoDecimals(itemSavings) };
+        }
+    }
+
+    private double[] ImplementBuyXGetYCupom(double itemTotal, double productValue, int quantity,
+            int requiredQty, double itemSavings) {
+        double qtFree = Math.floor(quantity / requiredQty);
+        double totalFreeItemsValue = productValue * qtFree;
+
+        itemTotal -= totalFreeItemsValue;
+        itemSavings += totalFreeItemsValue;
+
+        return new double[] { roundToTwoDecimals(itemTotal), roundToTwoDecimals(itemSavings) };
+    }
+
+    private double[] ImplementOverRideCupom(double itemTotal, double productValue,
+            int quantity, int requiredQty, double promoPrice,
+            double itemSavings) {
+        int qtPromo = (int) (quantity / requiredQty);
+        int qtNonPromo = (int) (quantity % requiredQty);
+
+        double totalDiscountedPrice = qtPromo * promoPrice;
+
+        if (qtNonPromo > 0) {
+            totalDiscountedPrice += productValue;
+        }
+
+        itemSavings += itemTotal - totalDiscountedPrice;
+        itemTotal -= itemSavings;
+
+        return new double[] { roundToTwoDecimals(itemTotal), roundToTwoDecimals(itemSavings) };
+    }
+
+    private double[] ImplementFlatCupom(double itemTotal, double productValue, int quantity,
+            double discountPercent, double itemSavings) {
+        double discountAmount = productValue * (discountPercent / 100);
+        double totalDiscount = discountAmount * quantity;
+
+        itemTotal -= totalDiscount;
+        itemSavings += totalDiscount;
+
+        return new double[] { roundToTwoDecimals(itemTotal), roundToTwoDecimals(itemSavings) };
+    }
+
+    private double roundToTwoDecimals(double value) {
+        return Math.round(value * 100.0) / 100.0;
     }
 
 }

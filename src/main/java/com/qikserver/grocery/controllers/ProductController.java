@@ -44,8 +44,4 @@ public class ProductController {
         return ResponseEntity.ok(itemCheckouts);
     }
 
-    @GetMapping("/hello")
-    public ResponseEntity<String> helloWorld() {
-        return new ResponseEntity<>("Hello, World!", HttpStatus.OK);
-    }
 }

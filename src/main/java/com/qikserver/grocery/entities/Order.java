@@ -1,19 +1,17 @@
 package com.qikserver.grocery.entities;
 
-import java.math.BigDecimal;
-
 public class Order {
     private Product product;
 
     private int quantity;
-    private BigDecimal itemTotal;
-    private BigDecimal savings;
+    private double itemTotal;
+    private double savings;
 
-    public Order(Product product, int quantity, BigDecimal itemTotal, BigDecimal itemSavings) {
+    public Order(Product product, int quantity, double itemTotal, double savings) {
         this.product = product;
         this.quantity = quantity;
         this.itemTotal = itemTotal;
-        this.savings = itemSavings;
+        this.savings = savings;
     }
 
     public Product getProduct() {
@@ -24,7 +22,7 @@ public class Order {
         this.product = product;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
@@ -32,19 +30,19 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public BigDecimal getItemTotal() {
+    public double getItemTotal() {
         return itemTotal;
     }
 
-    public void setItemTotal(BigDecimal itemTotal) {
+    public void setItemTotal(double itemTotal) {
         this.itemTotal = itemTotal;
     }
 
-    public BigDecimal getSavings() {
+    public double getSavings() {
         return savings;
     }
 
-    public void setSavings(BigDecimal savings) {
+    public void setSavings(double savings) {
         this.savings = savings;
     }
 }
