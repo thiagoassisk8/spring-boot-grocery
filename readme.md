@@ -1,6 +1,6 @@
 **API DOCUMENTATION**
 Api Documentation: [Link](https://immense-thicket-69297-ae6d8599f1bc.herokuapp.com/api-docs/)
-Thought process: [Link](https://www.notion.so/Thought-process-on-QikServe-Engineer-Technical-Test-7a2c2343361a462aa834fcb3cbafb622?pvs=4)
+Thought process: [Link](https://www.notion.so/Thought-Process-on-QuikServe-Challenge-c8953c1e907f4986abc5ff92b71115bf?pvs=4)
 
 ![Image Description](imgs/diagram.png)
 
