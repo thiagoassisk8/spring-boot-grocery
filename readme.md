@@ -1,5 +1,6 @@
 **API DOCUMENTATION**
 Api Documentation: [Link](https://immense-thicket-69297-ae6d8599f1bc.herokuapp.com/api-docs/)
+Thought process: [Link](https://www.notion.so/Thought-process-on-QikServe-Engineer-Technical-Test-7a2c2343361a462aa834fcb3cbafb622?pvs=4)
 
 ![Image Description](imgs/diagram.png)
 
@@ -64,5 +65,4 @@ To solve this my thogught was to create a form where real estate agencies input 
 
 Additionally, to implement this solution, I had to research which resources could assist in this process. That's when I found out about the Google Cloud Platform (GCP), which offers tools to handle geolocation and convert addresses into geographic coordinates. This discovery enabled the creation of the form that exchanges data for geolocation, providing an effective solution for real estate agencies to request services for hosts.
 
-I used an old-school Google Docs to tap down my initial thoughts on this problem.
-![Image Description](imgs/screenshot.png)
+![Image Description](imgs/NotionImg.png)
