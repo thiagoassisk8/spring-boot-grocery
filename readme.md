@@ -5,12 +5,11 @@ Thought process: [Link](https://www.notion.so/Thought-process-on-QikServe-Engine
 ![Image Description](imgs/diagram.png)
 
 1. **How long did you spend on the test? What would you add if you had more time?**
-   I spend about 9 hours within 3 days on the test
-   If I had more time, I would have added more unit tests using mockito for instance to ensure there are no breaches. I believe the more tests you put on the application, the better it gets because then we become better able to see more breaches that weren't found
-   Additionally, if I had extra time, I would make it possible to override the system and allow the operator to insert the coupon’s ID, and then the discount is given. They would simply need to enter the coupon ID correctly, and the system would apply it automatically, regardless of the circumstances. The way I approached it was to have the coupon applied if the circumstances match, not the other way around.
-   And improvemnts reguarding Error Handling. The excpetions that the application should deal with that weren't done given the lack of time to test more the application
-
+   I spent about 9 hours over the course of 3 days on the test. If I had more time, I would have added more unit tests using Mockito, for instance, to ensure there were no breaches. I believe that the more tests you implement in the application, the better it becomes, as it allows us to more effectively detect breaches that may not have been previously identified.
 2. **What was the most useful feature that was added to the latest version of your chosen language? Please include a snippet of code that shows how you've used it?**
+
+If we are discussing my usage, the snippet underneeth would be appropriate, as whenever I found myself in a tight spot needing info from WireMock, it came to the rescue. It was like having a handy tool in my toolbox, making data retrieval easy.
+However, if we were considering general use for more people who would work on the same project, I would say that the [documentation](https://immense-thicket-69297-ae6d8599f1bc.herokuapp.com/api-docs/) becuase would be make it easier to peopole get know the api.
 
 ```java
     public Product fetchProductById(String productId) throws IOException {
@@ -35,9 +34,6 @@ Thought process: [Link](https://www.notion.so/Thought-process-on-QikServe-Engine
         return gson.fromJson(response.body().string(), type);
     }
 ```
-
-If we are talking about my usage that would be the snippet above because whenever I find myself in a tight spot needing info from WireMock, it came to the rescue. It was like having a handy tool in my toolbox, making data retrieval easy.
-However if we were going to consider for general use more people would work on this same project I would say the [documentation](https://immense-thicket-69297-ae6d8599f1bc.herokuapp.com/api-docs/) becuase would be make it easier to peopole get know the api.
 
 3. **What did you find most difficult?**
 
