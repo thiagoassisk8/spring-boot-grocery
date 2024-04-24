@@ -37,6 +37,13 @@ public class ProductController {
 
     @PostMapping("/addCart")
     public ResponseEntity<List<Order>> addToCart(@RequestBody List<CartItem> items) throws IOException {
+        for (CartItem item : items) {
+            if (item.getQuantity() == 0) {
+                String errorMessage = "No quantity associated with this product";
+                throw new IOException(errorMessage);
+            }
+        }
+
         List<Order> checkoutOrder = this.ProductService.addToCart(items);
         if (checkoutOrder.isEmpty()) {
             return ResponseEntity.noContent().build();
