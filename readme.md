@@ -65,4 +65,6 @@ To solve this my thogught was to create a form where real estate agencies input 
 
 Additionally, to implement this solution, I had to research which resources could assist in this process. That's when I found out about the Google Cloud Platform (GCP), which offers tools to handle geolocation and convert addresses into geographic coordinates. This discovery enabled the creation of the form that exchanges data for geolocation, providing an effective solution for real estate agencies to request services for hosts.
 
+Solving this problem was important for Real estate agencies due to the fact they faced a significant hurdle in requesting services for their clients becuase the inability to provide precise location data. The solution of creating a form to input addresses and converting them into geolocations streamlined the process, boosting the user experience for both the agencies and the service providers.
+
 ![Image Description](imgs/NotionImg.png)
