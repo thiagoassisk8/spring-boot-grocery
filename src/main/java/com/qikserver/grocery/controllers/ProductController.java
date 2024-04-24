@@ -38,8 +38,12 @@ public class ProductController {
     @PostMapping("/addCart")
     public ResponseEntity<List<Order>> addToCart(@RequestBody List<CartItem> items) throws IOException {
         for (CartItem item : items) {
+            if (item.getQuantity() < 0) {
+                String errorMessage = "Negative quantity is not allowed.";
+                throw new IOException(errorMessage);
+            }
             if (item.getQuantity() == 0) {
-                String errorMessage = "No quantity associated with this product";
+                String errorMessage = "No quantity associated with the product.";
                 throw new IOException(errorMessage);
             }
         }
