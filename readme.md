@@ -64,3 +64,6 @@ Additionally, to implement this solution, I had to research which resources coul
 Solving this problem was important for Real estate agencies due to the fact they faced a significant hurdle in requesting services for their clients becuase the inability to provide precise location data. The solution of creating a form to input addresses and converting them into geolocations streamlined the process, boosting the user experience for both the agencies and the service providers.
 
 ![Image Description](imgs/NotionImg.png)
+
+**Bonus Frontend delivery**
+![Alt text](imgs/groceryStore.gif)
