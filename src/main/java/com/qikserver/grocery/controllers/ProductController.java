@@ -22,6 +22,7 @@ public class ProductController {
         this.ProductService = ProductService;
     }
 
+    @CrossOrigin
     @GetMapping("/products")
     public ResponseEntity<Object> getAllProducts() throws IOException {
         List<Product> products = this.ProductService.fetchProducts();
@@ -29,12 +30,14 @@ public class ProductController {
 
     }
 
+    @CrossOrigin
     @GetMapping("/products/{productId}")
     public ResponseEntity<Product> getProductById(@PathVariable String productId) throws IOException {
         Product product = this.ProductService.fetchProductById(productId);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("/addCart")
     public ResponseEntity<List<Order>> addToCart(@RequestBody List<CartItem> items) throws IOException {
         for (CartItem item : items) {
