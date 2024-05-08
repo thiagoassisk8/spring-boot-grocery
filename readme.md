@@ -64,5 +64,5 @@ The application's business logic ensures a comprehensive solution meeting requir
 The entire business logic relies on the `/products/addCart` endpoint because it follows these key rules required:
 
 1. Items can be added in any order.
-2. Promotions should be used whenever they're applicable.
+2. Discounts should be used whenever they're applicable.
 3. The store owner wants to show how much money the customer is saving.
