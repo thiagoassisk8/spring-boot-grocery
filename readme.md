@@ -1,3 +1,7 @@
+## 🎥 Video of my Thought process
+
+Thought process: [Link](https://youtu.be/cehnIllbMSQ)
+
 ## 🚀 Installation and Execution
 
 To install and run the project locally, follow these steps:
