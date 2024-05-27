@@ -39,6 +39,7 @@ public class ProductService {
             int quantity = item.getQuantity();
 
             double productValue = product.getPrice();
+
             double itemTotal = productValue * quantity;
             double itemSavings = 0;
 
@@ -63,11 +64,11 @@ public class ProductService {
             case FLAT_PERCENT:
                 return ImplementFlatCupom(itemTotal, productValue, quantity, promotion.getAmount(), itemSavings);
             case BUY_X_GET_Y_FREE:
-                return ImplementBuyXGetYCupom(itemTotal, productValue, quantity, promotion.getRequiredQty(),
+                return ImplementBuyXGetYCupom(itemTotal, productValue, quantity, promotion.getRequired_qty(),
                         itemSavings);
             case QTY_BASED_PRICE_OVERRIDE:
                 return ImplementOverRideCupom(itemTotal, productValue, quantity,
-                        promotion.getRequiredQty(), promotion.getPrice(), itemSavings);
+                        promotion.getRequired_qty(), promotion.getPrice(), itemSavings);
             default:
                 throw new IOException("Promotion type does not exist");
 

@@ -1,5 +1,10 @@
 package com.qikserver.grocery.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Order {
     private Product product;
 
@@ -14,35 +19,4 @@ public class Order {
         this.savings = savings;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getItemTotal() {
-        return itemTotal;
-    }
-
-    public void setItemTotal(double itemTotal) {
-        this.itemTotal = itemTotal;
-    }
-
-    public double getSavings() {
-        return savings;
-    }
-
-    public void setSavings(double savings) {
-        this.savings = savings;
-    }
 }

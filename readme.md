@@ -2,6 +2,10 @@
 
 Thought process: [Link](https://youtu.be/cehnIllbMSQ)
 
+📺 Improvements afterwards
+
+Explanation: [Link](https://www.youtube.com/watch?v=9QIMgHlEYes)
+
 ## 🚀 Installation and Execution
 
 To install and run the project locally, follow these steps:
